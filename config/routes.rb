@@ -1,4 +1,12 @@
 Twitter::Application.routes.draw do
+  #get "users/show"
+
+#  get "homepage/home"
+   
+   devise_for :users
+   resources :users, :only => [:show, :index]
+   resources :posts
+   resources :relationships
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -49,6 +57,8 @@ Twitter::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
+   root :to => 'homepage#home'
+  
 
   # See how all your routes lay out with "rake routes"
 

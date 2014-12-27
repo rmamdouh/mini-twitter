@@ -35,19 +35,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Mini Twitter</a>
-            </div>
+                <!-- <a class="navbar-brand" href="#">Mini Twitter</a> -->
+                <%= link_to "Mini Twitter", root_path, :class => "navbar-brand" %>
             <!-- Collect the nav links, forms, and other content for toggling -->
+            </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
 		    <li>
-                        <a href="#">Users</a>
+                        <!-- <a href="#">Users</a> -->
+                        <%= link_to "Users", users_path, :method => 'get' %> 
                     </li>
                     <li>
-                        <a href="#">Profile</a>
+                        <!-- <a href="#">Profile</a> -->
+                        <%= link_to "Profile", current_user, :method => 'get' %> 
                     </li>
                     <li>
-                        <a href="#">Sign out</a>
+                        <!-- <a href="#">Sign out</a> -->
+                        <%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %>
                     </li>
                 </ul>
             </div>
