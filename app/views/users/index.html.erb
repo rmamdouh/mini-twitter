@@ -4,18 +4,23 @@
  <% @users.each do |user| %>
   <tr>
    <td><%= link_to "#{user.email}", "/users/#{user.id}", :method => 'get' %></td>
-  </tr>
-  <tr>
+
+   <% if (current_user.following?(current_user.id, user.id) == false) %>
    <td><%= form_for(current_user.relationships.build(followed_id: user.id)) do |f| %>
-  <div><%= f.hidden_field :followed_id %></div>
-  <%= f.submit "Follow"%>
-<% end %></td>
+       <div><%= f.hidden_field :followed_id %></div>
+       <%= f.submit "Follow"%>
+       <% end %>
+   </td>
+
+   <% elsif (current_user.following?(current_user.id, user.id) == true) %>
    <td><%= form_for(current_user.relationships.build(followed_id: user.id)) do |f| %>
-  <div><%= f.hidden_field :followed_id %></div>
-  <%= f.submit "UnFollow"%>
-<% end %></td>  
+       <div><%= f.hidden_field :followed_id %></div>
+       <%= f.submit "UnFollow"%>
+       <% end %>
+   </td>  
+   <% end %>
+
  <% end %>
-  </tr>
 </table>
 
 

@@ -4,9 +4,10 @@
 
 <table>
  <% @posts.each do |post| %>
-  <tr>
    <% post.each do |obj|%>
+    <% if (current_user.following?(current_user.id, obj.user_id) == true) %>
     <tr><td><%= obj.content %></td></tr>
+    <% end %>
    <% end %>
  <% end %>
 </table>
