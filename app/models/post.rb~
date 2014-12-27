@@ -1,0 +1,12 @@
+class Post < ActiveRecord::Base
+  belongs_to :user
+  attr_accessible :user_id, :content
+
+  def delete(post_id)
+    self.posts.where(:id => post_id.to_i).destroy_all
+  end
+
+  def new(id, post_content)
+    self.posts.create!(:user_id => id.to_i, :content => post_content)
+  end
+end

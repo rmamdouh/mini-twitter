@@ -1,0 +1,13 @@
+<h1><%= "Welcome  #{current_user.email}"%></h1>
+
+<br></br>
+
+<table>
+ <% @posts.each do |post| %>
+   <% post.each do |obj|%>
+    <tr><td><%= obj.content %></td></tr>
+   <% end %>
+ <% end %>
+</table>
+
+

@@ -1,0 +1,31 @@
+<br></br>
+<h1><%= "#{@user.email} Posts" %></h1>
+
+
+<table>
+  <tr>
+   <td><%= form_for(current_user.posts.build()) do |f| %>
+      <div><%= f.label :"What's on your mind?" %>
+      <%= f.text_field :content %></div>
+      <%= f.submit "Post"%>
+      <% end %></td>
+  </tr>
+</table>
+
+<br></br>
+<br></br>
+
+<table>
+ <% @posts.each do |post| %>
+  <tr>
+   <td><%= post.content %></td>
+   <td><%= link_to "Delete", "/posts/#{post.id}", :method => 'delete'%>
+   </td>
+  </tr>
+ <% end %>
+</table>
+
+<br></br>
+
+
+

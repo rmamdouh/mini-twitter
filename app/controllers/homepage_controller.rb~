@@ -1,0 +1,10 @@
+class HomepageController < ApplicationController
+  def home
+    @posts
+    @contents = []
+    @users = User.all
+    @users.each do |user|
+      @posts << user.posts.order("created_at DESC")
+    end
+  end
+end
