@@ -1,6 +1,14 @@
 <br></br>
 <h1><%= "#{@user.email} Posts" %></h1>
 
+<table>
+  <tr>
+   <td><%= link_to "Followers", "/users/#{@user.id}/followers", :method => 'get'%></td>
+   <td><%= link_to "Following", "/users/#{@user.id}/following", :method => 'get'%></td>
+  </tr>
+</table>
+
+<br></br>
 
 <% if (current_user.id == @user.id) %>
 <table>
@@ -17,7 +25,6 @@
 </table>
 <% end %>
 
-<br></br>
 <br></br>
 
 <table>

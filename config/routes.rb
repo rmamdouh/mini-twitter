@@ -7,6 +7,8 @@ Twitter::Application.routes.draw do
    resources :users, :only => [:show, :index]
    resources :posts
    resources :relationships
+   match "/users/:id/followers" => "users#followers", :as => 'user_followers', :method => 'get'
+   match "/users/:id/following" => "users#following", :as => 'user_following', :method => 'get'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

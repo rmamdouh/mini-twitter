@@ -1,0 +1,15 @@
+<h1>Followers</h1>
+
+<% if (!@followers.blank?) %>
+<table>
+ <% @followers.each do |follower| %>
+    <tr><td><%= link_to "#{follower.email}", "/users/#{user.id}", :method => 'get' %></td></tr>
+ <% end %>
+</table>
+<% elsif (@followers.blank?) %>
+<table>
+    <tr><td>"No Followers!"</td></tr>
+</table>
+<% end %>
+
+
