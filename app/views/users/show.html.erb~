@@ -2,15 +2,23 @@
 <h1><%= "#{@user.email} Posts" %></h1>
 
 
+<% if (current_user.id == @user.id) %>
 <table>
   <tr>
    <td><%= form_for(current_user.posts.build()) do |f| %>
       <div><%= f.label :"What's on your mind?" %>
       <%= f.text_field :content %></div>
+   </td>
+   <td>
       <%= f.submit "Post"%>
-      <% end %></td>
+      <% end %>
+   </td>
   </tr>
 </table>
+<% end %>
+
+<br></br>
+<br></br>
 
 <table>
  <% @posts.each do |post| %>
