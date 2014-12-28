@@ -3,24 +3,20 @@ require 'rails_helper'
 RSpec.describe UsersController, :type => :controller do
 
   include Devise::TestHelpers
+  #routes { Users::Engine.routes }
+  #include Users::Engine.routes.url_helpers
+
+  #include Rails.application.routes.url_helpers
 
   before(:each) do
     @request.env["devise.mapping"] = Devise.mappings[:user]
     user = FactoryGirl.create(:user)
-    user.confirm! # or set a confirmed_at inside the factory. Only necessary if you are using the "confirmable" module
     sign_in user
-  end
-
-  describe "user authentication" do
-    it "shouldn't create a post if data is invalid" do
-      user = create(:user)
-      expect{post :create, {:email => user.email, :password => user.password}}.to change(User, :count).by(1)
-    end
   end
 
   describe "GET show" do
     it "returns http success" do
-      get :show
+      get :show, :id => 1
       expect(response).to have_http_status(:success)
     end
   end
@@ -29,6 +25,13 @@ RSpec.describe UsersController, :type => :controller do
     it "returns http success" do
       get :index
       expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "DELETE post" do
+    it "returns http success" do
+      get :show, :id => 1
+      expect{click_link 'Delete'}.to change(Post, :count).by(-1)
     end
   end
 

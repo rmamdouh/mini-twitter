@@ -26,10 +26,4 @@ RSpec.describe PostsController, :type => :controller do
     end
   end
 
-  describe "DELETE destroy success" do
-    it "should create a post if data is invalid" do
-      expect{click_link "Delete"}.to change(Post, :count).by(-1)
-    end
-  end
-
 end

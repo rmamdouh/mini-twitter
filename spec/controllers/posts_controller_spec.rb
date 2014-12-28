@@ -21,14 +21,8 @@ RSpec.describe PostsController, :type => :controller do
   end
 
   describe "POST create success" do
-    it "should create a post if data is invalid" do
+    it "should create a post if data is valid" do
       expect{post :create, {'post' => {'content' =>"posts controller rspec"}}}.to change(Post, :count).by(1)
-    end
-  end
-
-  describe "DELETE destroy success" do
-    it "should create a post if data is invalid" do
-      expect{click_link "Delete"}.to change(Post, :count).by(-1)
     end
   end
 

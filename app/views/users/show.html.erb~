@@ -4,6 +4,8 @@
 <table>
   <tr>
    <td><%= link_to "Followers", "/users/#{@user.id}/followers", :method => 'get'%></td>
+  </tr>
+  <tr>
    <td><%= link_to "Following", "/users/#{@user.id}/following", :method => 'get'%></td>
   </tr>
 </table>
@@ -31,7 +33,7 @@
  <% @posts.each do |post| %>
   <tr>
    <td><%= post.content %></td>
-   <td><%= link_to "Delete", "/posts/#{post.id}", :method => 'delete'%>
+   <td><%= link_to "Delete", "/posts/#{post.id}", :method => 'delete', :id => "delete_#{post.id}" %>
    </td>
   </tr>
  <% end %>
